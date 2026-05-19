@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# Force the workflow infrastructure to execute on modern, compliant Node.js 24 paths
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   security-audit:
     runs-on: ubuntu-latest
