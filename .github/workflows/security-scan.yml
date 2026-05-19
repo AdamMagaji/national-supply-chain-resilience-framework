@@ -1,0 +1,28 @@
+name: Federal Compliance & Security Scan
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code Architecture
+      uses: actions/checkout@v4
+
+    - name: Initialize Enterprise Python Environment
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install Static Application Security Testing (SAST) Tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install bandit
+
+    - name: Execute Security & NIST Vulnerability Assessment
+      run: |
+        bandit -r ./core -ll
