@@ -62,6 +62,31 @@ docker run --rm nscrf-core
 
 ---
 
+## 🖥️ Accessing the UI Dashboard & API Interactive Layer
+
+The framework includes two high-visibility interfaces designed for both technical auditors and non-technical stakeholders to evaluate the data pipeline in real-time.
+
+### 📊 1. Streamlit Automated Visualization Dashboard
+This graphical dashboard provides visual KPI metrics, data tables, and dynamic sliders to simulate cargo stream volumes and calibrate transit delays.
+* **How to Launch:** Run the following command in your terminal:
+  ```bash
+  python -m streamlit run dashboard.py
+  ```
+* **How to Access:** Once running, your terminal will output a local network URL. Open your web browser and navigate directly to:
+  `http://localhost:8501`
+
+### 🔌 2. Advanced API Documentation Layer (Swagger UI)
+This fully self-contained interface displays the REST API endpoint structures, maps out input payloads, and allows for interactive testing directly from the browser window.
+* **How to Launch:** Run the following command in your terminal to boot the local server process:
+  ```bash
+  python app.py
+  ```
+* **How to Access:** Because the API dashboard is mapped directly to the server's root path for seamless accessibility, open your web browser and navigate to:
+  `http://127.0.0`
+* **Interactive Testing:** Click the blue **`POST /ingest-and-process`** bar, click the **`Try it out`** button, and execute a sample multi-tenant payload to watch the cryptographic masking layer run live.
+
+---
+
 ## 📊 Verification & Benchmarking
 This framework contains built-in automated testing scripts to empirically validate operational throughput and performance gains. 
 
