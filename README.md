@@ -69,7 +69,7 @@ The framework includes two high-visibility interfaces designed for both technica
 ### 📊 1. Streamlit Automated Visualization Dashboard
 This graphical dashboard provides visual KPI metrics, data tables, and dynamic sliders to simulate cargo stream volumes and calibrate transit delays.
 
-* **Direct Streamlit URL** You can directly view the dashboard here:
+* **Direct Streamlit URL:** You can directly view the dashboard here:
   `https://national-supply-chain-resilience-framework.streamlit.app/`
 
 * **How to Launch:** Run the following command in your terminal:
