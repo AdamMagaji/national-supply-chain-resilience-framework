@@ -1,28 +1,30 @@
+from fastapi_offline import FastAPIOffline
+from typing import List, Dict, Any
 from core.pipeline import ResiliencePipeline
 from core.security import SecureComplianceLayer
-import json
+import uvicorn
 
-def run_framework_demo():
-    # 1. Mock Critical Supply Chain Payload (e.g., Medical Supplies or Semiconductor Logistics)
-    mock_logistics_data = [
-        {"shipment_id": "SHIP-9081", "carrier_name": "GlobalTransitCorp", "transit_delay_days": 6, "destination_hub": "Port of Los Angeles"},
-        {"shipment_id": "SHIP-1102", "carrier_name": "ApexLogisticsLtd", "transit_delay_days": 2, "destination_hub": "Chicago O'Hare"}
-    ]
-    
-    # 2. Instantiate Architecture
-    pipeline = ResiliencePipeline(pipeline_id="NSCRF-US-WEST-01")
+# Initialize the API with the main documentation endpoint forced onto the ROOT path (/)
+app = FastAPIOffline(
+    title="National Supply Chain Resilience Framework (NSCRF) API",
+    description="Federal-ready REST API architecture designed for real-time logistics data ingestion, NIST-compliant PII masking, and linear risk vector assessment.",
+    version="1.0.0",
+    docs_url="/"  # Forces the visual dashboard to open instantly on the main page
+)
+
+@app.post("/ingest-and-process", response_model=List[Dict[str, Any]])
+def process_supply_chain_stream(payload: List[Dict[str, Any]]):
+    """
+    Ingests raw multi-tenant supply chain telemetry, applies cryptographic privacy masks 
+    to carrier identifiers, and maps real-time logistics bottlenecks.
+    """
+    pipeline = ResiliencePipeline(pipeline_id="NSCRF-API-NODE-01")
     compliance = SecureComplianceLayer()
     
-    # 3. Secure data layer (Masking sensitive carrier data to protect trade secrets)
-    secured_data = compliance.mask_pii(mock_logistics_data, target_fields=["carrier_name"])
+    secured_data = compliance.mask_pii(payload, target_fields=["carrier_name"])
+    processed_results = pipeline.evaluate_risk(secured_data)
     
-    # 4. Ingest and Process risk metrics
-    ingested_data = pipeline.ingest_batch(secured_data)
-    processed_results = pipeline.evaluate_risk(ingested_data)
-    
-    # Print results to demonstrate framework utility
-    print("\n--- PROCESSED COMPLIANT SYSTEM OUTPUT ---")
-    print(json.dumps(processed_results, indent=4))
+    return processed_results
 
 if __name__ == "__main__":
-    run_framework_demo()
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=False)

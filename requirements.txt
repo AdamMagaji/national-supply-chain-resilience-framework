@@ -1,3 +1,7 @@
 # Base standard library dependencies. Expand as you add databases or APIs.
 fastapi>=0.100.0
 uvicorn>=0.22.0
+streamlit>=1.25.0
+pandas>=2.0.0
+fastapi-offline>=1.7.0
+
