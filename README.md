@@ -1,3 +1,7 @@
+![Security Scan](https://github.com)
+[![License: Apache 2.0](https://shields.io)](https://opensource.org)
+[![Python: 3.11](https://shields.io)](https://python.org)
+
 # National Supply Chain Resilience Framework (NSCRF)
 
 ## 🇺🇸 Executive Summary & National Importance
@@ -63,4 +67,52 @@ This framework contains built-in automated testing scripts to empirically valida
 * **Ingestion Throughput:** 7,314,413.27 records/sec
 * **PII Masking Latency:** 0.00064 ms/payload
 * **Risk Evaluation Complexity:** O(N) linear parsing scalability
+
+---
+
+## 🔬 Framework Verification & Testing Guide
+This project contains built-in automated verification protocols. Any developer, security auditor, or evaluator can clone this repository and test the data pipeline locally using the standardized entry points below.
+
+### 📋 Prerequisites
+Ensure you have one of the following installed on your host system:
+* **Python 3.10+** (with `pip` package manager)
+* **Docker Desktop** (Recommended for cloud-agnostic isolation)
+
+---
+
+### 🚀 Execution Methods
+
+#### Method 1: Standard Ingestion & Compliance Validation
+This method executes the core data pipeline, ingests a mock multi-tenant logistics payload, applies SHA-256 PII masking, and runs the linear risk-scoring algorithm.
+```bash
+# Clone the repository
+git clone https://github.com
+cd national-supply-chain-resilience-framework
+
+# Install lightweight dependencies
+pip install -r requirements.txt
+
+# Run the core validation engine
+python app.py
+```
+* **Expected Output:** A clean, formatted JSON structure displaying masked carrier identifiers and calculated risk metrics.
+
+#### Method 2: High-Volume Enterprise Stress Testing
+This entry point executes the benchmarking engine to stress-test the framework under an enterprise-scale load of 100,000 parallel supply chain events to calculate raw processing speed.
+```bash
+python benchmark.py
+```
+* **Expected Output:** A high-visibility `================ BENCHMARK RESULTS ================` block displaying raw ingestion throughput (records/sec) and security latency (ms/record).
+
+#### Method 3: Isolated Docker Sandbox Run (Zero-Installation Method)
+Deploy and test the framework inside a fully isolated, containerized environment that replicates a secure federal cloud environment.
+```bash
+# Build the standardized container image
+docker build -t supply-chain-framework .
+
+# Boot up the container and execute internal systems validation tests
+docker run --rm supply-chain-framework
+```
+* **Expected Output:** The container will spin up, execute the core validation code automatically, print the verified system output to the screen, and cleanly terminate.
+
 
