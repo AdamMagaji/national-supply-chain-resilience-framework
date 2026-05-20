@@ -1,6 +1,6 @@
 [![Federal Compliance & Security Scan](https://github.com/AdamMagaji/national-supply-chain-resilience-framework/actions/workflows/security-scan.yml/badge.svg)](https://github.com/AdamMagaji/national-supply-chain-resilience-framework/actions/workflows/security-scan.yml)
-[![License: Apache 2.0](.github/assets/license-badge.svg)](https://opensource.org)
-[![Python: 3.11](.github/assets/python-badge.svg)](https://python.org)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%20License%202.0-blue)](https://opensource.org)
+[![Python: 3.11](https://img.shields.io/badge/python-%3E=3.11-blue?logo=python)](https://python.org)
 
 
 # National Supply Chain Resilience Framework (NSCRF)
